@@ -2,7 +2,7 @@ type ListItem<T> = {
     value: T;
     next: ListItem<T> | null;
 }
-class LinkedList{
+export class LinkedList{
     private head:any = null;
     private tail:any = null
 
@@ -52,6 +52,22 @@ class LinkedList{
             this.tail = currnetNode;
         }
 
+    }
+
+    deleteHead(){
+        if(!this.head){
+            return null;
+        }
+
+        const deletedItem: ListItem<any> = this.head
+        if(this.head.next){
+            this.head = this.head.next
+        } else{
+            this.head = null;
+            this.tail = null;
+        }
+
+        return deletedItem;
     }
 
     inserAfter(value: any, afterValue: any){
