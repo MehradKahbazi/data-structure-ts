@@ -1,5 +1,5 @@
 /**
- * Stack structure implemented on LinkedList Structure
+ * Stack structure implemented based on LinkedList Structure
  */
 
 import { LinkedList } from "./LinkedList";
