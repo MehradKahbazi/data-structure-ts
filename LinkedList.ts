@@ -1,9 +1,13 @@
+/**
+ * Linked List Implementation
+ */
+
 type ListItem<T> = {
     value: T;
     next: ListItem<T> | null;
 }
 export class LinkedList{
-    private head:any = null;
+    public head:any = null;
     private tail:any = null
 
     constructor(){}
