@@ -37,7 +37,6 @@ class TreeNode {
     }
 
     removeNode(value: string) {
-        // this.children.splice(index, 1);
         const segments = value.split('/');
 
         if (segments.length === 0) {
@@ -74,6 +73,8 @@ class Tree {
         this.root.removeNode(path)
     }
 }
+
+// simulating a file system tree structure
 
 const fileSystem = new Tree('/');
 const documentsNodeData = fileSystem.root.addNode('documents');
