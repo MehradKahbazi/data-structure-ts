@@ -58,6 +58,37 @@ class TreeNode {
             existingChildNode.removeNode(segments.slice(1).join('/'))
         }
     }
+
+    find(value: string){
+        // depth-first
+        for(const child of this.children){
+            
+            if(child.value === value){
+                
+                return child;
+            }
+            const nestedChildNode = child.find(value);
+            if(nestedChildNode){
+                return nestedChildNode
+            }
+        }
+
+        
+        // breadth-first
+        for(const child of this.children){
+            
+            if(child.value === value){
+                
+                return child;
+            }
+        }
+        for(const child of this.children){
+            const nestedChildNode = child.find(value);
+            if(nestedChildNode){
+                return nestedChildNode
+            }
+        }
+    }
 }
 
 class Tree {
@@ -71,6 +102,13 @@ class Tree {
 
     remove(path: string) {
         this.root.removeNode(path)
+    }
+
+    find(value: string){
+        if(this.root.value === value){
+            return this.root;
+        }
+        return this.root.find(value)
     }
 }
 
@@ -86,5 +124,8 @@ fileSystem.add('documents/personal/tex.docx')
 fileSystem.add('games/cod.exe')
 fileSystem.add('games/cod2.exe')
 fileSystem.remove('games/cod2.exe')
+
+console.log(fileSystem.find('personal'));
+
 
 console.log(fileSystem);
