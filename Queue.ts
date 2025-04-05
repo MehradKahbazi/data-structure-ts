@@ -22,3 +22,13 @@ class Queue{
         return this.linkedList.toArray();
     }
 }
+
+const queue = new Queue(new LinkedList())
+
+queue.enqueue(5);
+queue.enqueue('this');
+queue.enqueue('Hello');
+
+console.log(queue.toArray());
+
+
