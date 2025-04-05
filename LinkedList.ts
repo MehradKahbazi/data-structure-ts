@@ -2,10 +2,10 @@
  * Linked List Implementation
  */
 
-type ListItem<T> = {
-    value: T;
-    next: ListItem<T> | null;
+class ListItem<T>{
+    constructor(private value: T, private next?: ListItem<T> | null){}
 }
+
 export class LinkedList{
     public head:any = null;
     private tail:any = null
@@ -13,7 +13,7 @@ export class LinkedList{
     constructor(){}
 
     append(value: any){
-        const newNode: ListItem<typeof value> = {value, next: null};
+        const newNode = new ListItem<typeof value>(value);
 
         if(this.tail){
             this.tail.next = newNode;
@@ -25,7 +25,7 @@ export class LinkedList{
     }
 
     prepend(value: any){
-        const newNode: ListItem<typeof value> = {value, next: this.head};
+        const newNode = new ListItem<typeof value>(value, this.head);
 
         this.head = newNode;
         if(!this.tail){
@@ -42,7 +42,7 @@ export class LinkedList{
             this.head = this.head.next;
         }
 
-        let currnetNode : ListItem<typeof value> = this.head;
+        let currnetNode =  this.head;
 
         while(currnetNode.next){
             if(currnetNode.next.value === value){
@@ -63,7 +63,7 @@ export class LinkedList{
             return null;
         }
 
-        const deletedItem: ListItem<any> = this.head
+        const deletedItem = this.head
         if(this.head.next){
             this.head = this.head.next
         } else{
